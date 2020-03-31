@@ -1,0 +1,19 @@
+steps:
+
+  - label: ":node:"
+    command: "npm run test:unit"
+
+  - wait
+
+  - label: ":docker: build and push master"
+    agents:
+      queue: "default"
+      docker: "*"
+    command: "scripts/buildkite/docker-push.sh"
+    retry:
+      automatic:
+        limit: 1
+    plugins:
+      - docker-login#v2.0.1:
+          username: temporaltech
+          password-env: DOCKER_LOGIN_PASSWORD
