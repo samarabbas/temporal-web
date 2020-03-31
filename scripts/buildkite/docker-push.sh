@@ -20,5 +20,5 @@ fi
 
 echo "Building docker image for $BUILDKITE_MESSAGE"
 
-docker build . -f Dockerfile -t temporalio/web:test
-docker push temporalio/web:test
+docker build . -f Dockerfile -t temporalio/web:latest
+docker push temporalio/web:latest

@@ -1,7 +1,10 @@
 steps:
-
-  - label: ":node:"
+  - label: ":node: unit test"
     command: "npm run test:unit"
+    plugins:
+      - docker-compose#v3.1.0:
+          run: build
+          config: docker/buildkite/docker-compose.yml
 
   - wait
 
